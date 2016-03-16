@@ -6,10 +6,8 @@ import zipfile
 
 op = os.path
 
-limit = 5
-
 # Python pseudocode
-def rec_comp(file,new_root):
+def rec_comp(file, new_root, limit=5):
     """Recursively copy a file tree, compresssing the files in the folder if it 
     has more than /limit/ non-folder files inside.
     """
@@ -24,10 +22,9 @@ def rec_comp(file,new_root):
         n = len(subfiles)
         if n > limit:
             archive_name = op.join(new_file, file_name) + ".zip"
-            zipf = zipfile.ZipFile(archive_name, 'w', zipfile.ZIP_DEFLATED)
-            for f in subfiles:
-                zipf.write(f,op.split(f)[1]) #Name in archive is without directories
-            zipf.close()               
+            with zipfile.ZipFile(archive_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                for f in subfiles:
+                    zipf.write(f, op.split(f)[1]) #Name in archive is without directories
             sub_iter = subfolders
         else:
             sub_iter = folder_content            
