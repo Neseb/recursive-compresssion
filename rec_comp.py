@@ -30,7 +30,7 @@ def rec_comp(file, new_root, limit=5):
             sub_iter = folder_content            
 
         for f in sub_iter:
-           rec_comp(f,new_file)
+           rec_comp(f,new_file,limit)
 
     else:
         os.system('robocopy "%s" "%s" "%s"' %(old_root, new_root, file_name))
