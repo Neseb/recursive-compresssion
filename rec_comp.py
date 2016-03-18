@@ -40,7 +40,7 @@ def rec_comp(file, new_root, limit=5):
 if __name__ == '__main__':
     #rec_comp(str(sys.argv[1]), str(sys.argv[2]))
     source = r"C:\Users\Vincent\Documents\mess"
-    destination = r"C:\Users\Vincent\Documents\new1"
+    destination = r"C:\Users\Vincent\Documents\new"
     rec_comp(source,destination)
 
         #return 
